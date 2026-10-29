@@ -1,0 +1,9 @@
+metric,source_column_or_formula,unit,measurement_layer,duplication_handling,train_or_inference,measured_or_derived,source_location,status,coverage
+QoS Satisfaction,cohort_u_qos,"dimensionless [0,1]",application,deduplicated,inference,measured,tvt_e2e.py:1186-1216,VERIFIED,36/36
+Throughput,uu_throughput_bps + pc5_throughput_bps,Mbps,application socket RX,"duplicates INCLUDED, headers INCLUDED",inference,measured,tvt_ns3.cc:1406-1414 (before dedup at :1419),VERIFIED,36/36
+Goodput (reference only),cohort_logical_goodput_bps,Mbps,application payload,"deduplicated, headers excluded",inference,measured,tvt_ns3.cc goodput path,VERIFIED,36/36
+End-to-End Latency,cohort_mean_delay_ms,ms (arithmetic mean),application end-to-end,"deduplicated, first copy",inference,measured,"tvt_e2e.py:1129-1132; tvt_ns3.cc:1445-1448,2060-2063",VERIFIED,36/36
+Timely Delivery Ratio,cohort_pdr,% (deadline-constrained),application,deduplicated,inference,measured,"tvt_e2e.py:1135-1137; tvt_ns3.cc:1449,220,2036-2045",VERIFIED,36/36
+Raw PDR (audit only),logical_rx_packets / logical_tx_packets,%,application,deduplicated,inference,derived,episode_summary.csv,VERIFIED,36/36
+Training Reward,cumulative_reward,sum of cohort U_qos,application,n/a,training,measured,tvt_test.py:1107-1108; tvt_e2e.py:1186-1196,VERIFIED,4 arms x 10 seeds x 161 ep
+Lower-layer drop attribution,(none),n/a,PHY/MAC/RLC,n/a,n/a,n/a,no Drop trace connected in tvt_ns3.cc,NOT AVAILABLE,0
